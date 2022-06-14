@@ -1,10 +1,21 @@
 
+const fsPromises = require('fs').promises
+const path = require('path');
 
-const fs = require('fs');
+/**
+ * 
+ * @returns async function te read json file 
+ */
+const categoriesArr = async() => {
+    try {
+      const data = await fsPromises.readFile(path.join(__dirname,'../jsonfile','categories.json'),'utf8');
+      const dataJson = JSON.parse(data);
 
-let categoriesArr = fs.readFileSync('./categories.json');
-let categories = JSON.parse(categoriesArr);
-// console.log(categories);
+        return dataJson;
+    }catch (err) {
+        return console.error(err);
+    }
+}
 
 
-    module.exports.categories = categories;
+module.exports.categoriesArr= categoriesArr;
