@@ -17,6 +17,8 @@ const { sum } = require('./app/calc')
 
 categoriesArr().then((data) => {
     console.log(`Sum of json file array is : ${sum(data)}`);
+    setTimeout(()=> {
     console.log(`Sum of the concatenated arrays is: ${sum(concat(data))}`);
+    },5000)
 
 })
